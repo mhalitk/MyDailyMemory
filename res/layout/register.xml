@@ -23,7 +23,7 @@
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <EditText
-                android:id="@+id/login_username"
+                android:id="@+id/register_username"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -46,7 +46,26 @@
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <EditText
-                android:id="@+id/login_password"
+                android:id="@+id/register_password"
+                android:layout_width="212dp"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword" />
+
+        </LinearLayout>
+        
+         <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Şifre (tekrar)"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <EditText
+                android:id="@+id/register_passwordAgain"
                 android:layout_width="212dp"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword" />
@@ -62,15 +81,15 @@
                 android:id="@+id/button2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Kayıt Ol"
-                android:onClick="register" />
+                android:text="Geri"
+                android:onClick="back" />
 
             <Button
                 android:id="@+id/button1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Giriş"
-                android:onClick="login" />
+                android:text="Kayıt Ol"
+                android:onClick="register" />
 
         </LinearLayout>
 

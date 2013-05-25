@@ -1,8 +1,10 @@
 package gyte.ooaad.mydailymemory;
 
-import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.Menu;
+import android.view.View;
 
 public class Login extends Activity {
 
@@ -18,4 +20,18 @@ public class Login extends Activity {
 		return true;
 	}
 
+	/**
+	 * Giriþ ekranýndaki giriþ tuþuna basýldýðýnda bu fonksiyon çaðýrýlýr
+	 */
+	public void login(View view) {
+		// TODO Giriþ tuþuna basýldýðýnda yapýlacaklar
+	}
+
+	/**
+	 * Giriþ ekranýndaki kayýt ol tuþuna basýldýðýnda bu fonksiyon çaðýrýlýr
+	 */
+	public void register(View view) {
+		// TODO Kayýt Ol tuþuna basýldýðýnda yapýlacaklar
+		startActivity(new Intent(Login.this, Register.class));
+	}
 }
