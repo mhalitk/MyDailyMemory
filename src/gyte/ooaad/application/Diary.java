@@ -9,9 +9,13 @@ package gyte.ooaad.application;
 public abstract class Diary {
 
 	private Date date;
-
-	public Diary(){
-
+	
+	public Diary() {
+		this.date = null;
+	}
+	
+	public Diary(Date theDate){
+		this.date = theDate;
 	}
 
 	public void finalize() throws Throwable {
@@ -19,27 +23,13 @@ public abstract class Diary {
 	}
 
 	public Date getDate(){
-		return null;
+		return this.date;
 	}
-
-	public String getText(){
-		return "";
-	}
-
-	/**
-	 * 
-	 * @param date
-	 */
+	
 	public void setDate(Date date){
-
+		this.date = date;
 	}
 
-	/**
-	 * 
-	 * @param text
-	 */
-	public void setText(String text){
-
-	}
+	
 
 }

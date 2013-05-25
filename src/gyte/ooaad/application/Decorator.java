@@ -9,10 +9,13 @@ package gyte.ooaad.application;
 public abstract class Decorator extends Diary {
 
 	private Diary diary;
-	public Diary m_Diary;
-
-	public Decorator(){
-
+	
+	public Decorator(Diary theDiary){
+		this.diary = theDiary;
+	}
+	
+	public Decorator() {
+		diary = null;
 	}
 
 	public void finalize() throws Throwable {

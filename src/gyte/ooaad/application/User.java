@@ -1,5 +1,6 @@
 package gyte.ooaad.application;
-import java.util.Vector;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @version 1.0
@@ -7,23 +8,44 @@ import java.util.Vector;
  */
 public class User {
 
-	private Vector<Memory> memories;
+	final int DEFAULT_USERID = -1;
+	private List<Memory> memories;
 	private int userId;
-	public Memory m_Memory;
+	String name;
+	String password;
 
 	public User(){
-
+		memories = new ArrayList<Memory>();
+		name = "";
+		password = "";
+		userId = DEFAULT_USERID;
 	}
-
+	
+	public void setId(int theUserId) {
+		this.userId = theUserId;
+	}
+	
+	public void setName(String theName) {
+		this.name = theName;
+	}
+	
+	public void setPassword(String thePassword) {
+		this.password = thePassword;
+	}
+	
+	public int getUserId() {
+		return userId;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public String getPassword() {
+		return password;
+	}
+	
 	public void finalize() throws Throwable {
-
-	}
-
-	/**
-	 * 
-	 * @param newFriend
-	 */
-	public void addFriend(User newFriend){
 
 	}
 
@@ -32,15 +54,7 @@ public class User {
 	 * @param newMemory
 	 */
 	public void addMemory(Memory newMemory){
-
-	}
-
-	/**
-	 * 
-	 * @param friend
-	 */
-	public boolean deleteFriend(User friend){
-		return true;
+		memories.add(newMemory);
 	}
 
 	/**
@@ -48,7 +62,16 @@ public class User {
 	 * @param memory
 	 */
 	public boolean deleteMemory(Memory memory){
-		return true;
+		// TODO sync with database
+		
+		boolean isContains = memories.contains(memory);
+		
+		if (isContains) {
+			memories.remove(memory);
+			return true;
+		} 
+		
+		return false;
 	}
 
 }
