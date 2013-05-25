@@ -74,33 +74,6 @@
           android:gravity="right" >
 
           <TextView
-              android:id="@+id/textView2"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:text="Başlık"
-              android:textAppearance="?android:attr/textAppearanceSmall" />
-
-          <EditText
-              android:id="@+id/newmemory_header"
-              android:layout_width="225dp"
-              android:layout_height="wrap_content"
-              android:ems="10"
-              android:hint="başlık"
-              android:maxLines="1"
-              android:singleLine="true" >
-
-              <requestFocus />
-          </EditText>
-
-      </LinearLayout>
-
-      <LinearLayout
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_marginRight="20dp"
-          android:gravity="right" >
-
-          <TextView
               android:id="@+id/textView4"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
@@ -130,7 +103,7 @@
               android:textAppearance="?android:attr/textAppearanceSmall" />
 
           <EditText
-              android:id="@+id/editText1"
+              android:id="@+id/newmemory_text"
               android:layout_width="225dp"
               android:layout_height="wrap_content"
               android:ems="10"

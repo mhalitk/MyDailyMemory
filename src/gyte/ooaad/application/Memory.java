@@ -1,4 +1,5 @@
 package gyte.ooaad.application;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +12,7 @@ public class Memory {
 
 	private List<Diary> diaries;
 
-	public Memory(){
+	public Memory() {
 		diaries = new ArrayList<Diary>();
 	}
 
@@ -23,7 +24,7 @@ public class Memory {
 	 * 
 	 * @param newDiary
 	 */
-	public void addDiary(Diary newDiary){
+	public void addDiary(Diary newDiary) {
 		diaries.add(newDiary);
 	}
 
@@ -31,12 +32,16 @@ public class Memory {
 	 * 
 	 * @param diary
 	 */
-	public boolean deleteDiary(Diary diary){
+	public boolean deleteDiary(Diary diary) {
 		if (diaries.contains(diary)) {
 			diaries.remove(diary);
 			return true;
-		} 
+		}
 		return false;
+	}
+
+	public List<Diary> getDiaries() {
+		return diaries;
 	}
 
 }

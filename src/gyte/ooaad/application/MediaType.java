@@ -9,7 +9,7 @@ public abstract class MediaType {
 
 	private String media;
 
-	public MediaType(){
+	public MediaType() {
 		media = null;
 	}
 
@@ -17,7 +17,7 @@ public abstract class MediaType {
 
 	}
 
-	public String getMedia(){
+	public String getMedia() {
 		return media;
 	}
 
@@ -25,8 +25,8 @@ public abstract class MediaType {
 	 * 
 	 * @param media
 	 */
-	public void setMedia(String theMedia){
-		this.media = media;
+	public void setMedia(String theMedia) {
+		this.media = theMedia;
 	}
 
 }

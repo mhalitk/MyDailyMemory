@@ -11,6 +11,10 @@ public class Text extends MediaType {
 		super();
 	}
 
+	public Text(String text) {
+		super.setMedia(text);
+	}
+	
 	public void finalize() throws Throwable {
 
 	}

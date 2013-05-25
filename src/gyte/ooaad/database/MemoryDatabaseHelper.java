@@ -68,10 +68,6 @@ public class MemoryDatabaseHelper extends SQLiteDataService {
 	public boolean addDiary(User user, Diary diary) {
 		open();
 
-		if (diary instanceof ConcreteDiary) {
-
-		}
-
 		ContentValues contentValues = new ContentValues();
 		contentValues.put(SQLiteConnection.C_USERID, user.getUserId());
 		contentValues.put(SQLiteConnection.C_DATE, diary.getDate().getDate());

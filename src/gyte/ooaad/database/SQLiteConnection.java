@@ -38,11 +38,10 @@ public class SQLiteConnection extends SQLiteOpenHelper {
 			+ C_USERID + " integer not null, " + C_DATE + " text not null, "
 			+ C_DATEADDED + " text not null, " + C_DELETED
 			+ " integer default 0, " + C_TEXT + " text not null, " + C_PHOTO
-			+ " text not null, " + C_SOUND + " text not null, " + C_VIDEO
-			+ " text not null);";
+			+ " text, " + C_SOUND + " text, " + C_VIDEO + " text);";
 
 	private static final String DATABASE_NAME = "mydailymemory.db";
-	private static final int DATABASE_VERSION = 1;
+	private static final int DATABASE_VERSION = 2;
 
 	public SQLiteConnection(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
