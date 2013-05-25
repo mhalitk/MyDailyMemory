@@ -1,7 +1,5 @@
 package gyte.ooaad.application;
 
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @version 1.0

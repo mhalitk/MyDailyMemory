@@ -1,14 +1,18 @@
 package gyte.ooaad.mydailymemory;
 
-import java.util.List;
-
 import gyte.ooaad.application.ConcreteDiary;
 import gyte.ooaad.application.Diary;
+import gyte.ooaad.application.PhotoDiary;
+import gyte.ooaad.application.SoundDiary;
+import gyte.ooaad.application.VideoDiary;
 import gyte.ooaad.database.MemoryDatabaseHelper;
+import gyte.ooaad.database.SQLiteConnection;
+
+import java.util.List;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.media.AudioRecord.OnRecordPositionUpdateListener;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -98,14 +102,35 @@ public class MainActivity extends Activity {
 						.findViewById(R.id.memlistitem_header);
 				TextView text = (TextView) row
 						.findViewById(R.id.memlistitem_text);
-				header.setText(diaries.get(position).getDate().getDate());
-				text.setText(((ConcreteDiary) diaries.get(position)).getText()
-						.getMedia());
+				TextView tools = (TextView) row
+						.findViewById(R.id.memlistitem_tools);
+				tools.setText("");
+
+				Diary diary = diaries.get(position);
+				header.setText(diary.getDate().getDate());
+
+				while (!(diary instanceof ConcreteDiary)) {
+					if (diary instanceof VideoDiary) {
+						tools.setText(tools.getText().toString() + "Video, ");
+						diary = ((VideoDiary) diary).getDiary();
+					}
+
+					if (diary instanceof PhotoDiary) {
+						tools.setText(tools.getText().toString() + "Resim, ");
+						diary = ((PhotoDiary) diary).getDiary();
+					}
+
+					if (diary instanceof SoundDiary) {
+						tools.setText(tools.getText().toString() + "Ses, ");
+						diary = ((SoundDiary) diary).getDiary();
+					}
+				}
+
+				text.setText(((ConcreteDiary) diary).getText().getMedia());
 
 				return row;
 
 			}
 		});
 	}
-
 }

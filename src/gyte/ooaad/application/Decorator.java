@@ -13,6 +13,7 @@ public abstract class Decorator extends Diary {
 
 	public Decorator(Diary theDiary) {
 		this.diary = theDiary;
+		setDate(theDiary.getDate());
 	}
 
 	public Decorator() {
@@ -26,5 +27,4 @@ public abstract class Decorator extends Diary {
 	public void finalize() throws Throwable {
 		super.finalize();
 	}
-
 }

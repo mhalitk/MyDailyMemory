@@ -74,34 +74,28 @@ public class MemoryDatabaseHelper extends SQLiteDataService {
 		contentValues.put(SQLiteConnection.C_DATEADDED,
 				Calendar.getInstance(Locale.getDefault()).getTime().toString());
 
-		if (diary instanceof VideoDiary) {
-			contentValues.put(SQLiteConnection.C_VIDEO, ((VideoDiary) diary)
-					.getMedia().getMedia());
-			diary = ((VideoDiary) diary).getDiary();
+		while (!(diary instanceof ConcreteDiary)) {
+			if (diary instanceof VideoDiary) {
+				contentValues.put(SQLiteConnection.C_VIDEO,
+						((VideoDiary) diary).getMedia().getMedia());
+				diary = ((VideoDiary) diary).getDiary();
+			}
+
+			if (diary instanceof PhotoDiary) {
+				contentValues.put(SQLiteConnection.C_PHOTO,
+						((PhotoDiary) diary).getPhoto().getMedia());
+				diary = ((PhotoDiary) diary).getDiary();
+			}
+
 			if (diary instanceof SoundDiary) {
 				contentValues.put(SQLiteConnection.C_SOUND,
 						((SoundDiary) diary).getSound().getMedia());
 				diary = ((SoundDiary) diary).getDiary();
-
-				if (diary instanceof PhotoDiary) {
-					contentValues.put(SQLiteConnection.C_PHOTO,
-							((PhotoDiary) diary).getPhoto().getMedia());
-					diary = ((PhotoDiary) diary).getDiary();
-
-					contentValues.put(SQLiteConnection.C_TEXT,
-							((ConcreteDiary) diary).getText().getMedia());
-				} else {
-					contentValues.put(SQLiteConnection.C_TEXT,
-							((ConcreteDiary) diary).getText().getMedia());
-				}
-			} else {
-				contentValues.put(SQLiteConnection.C_TEXT,
-						((ConcreteDiary) diary).getText().getMedia());
 			}
-		} else {
-			contentValues.put(SQLiteConnection.C_TEXT, ((ConcreteDiary) diary)
-					.getText().getMedia());
 		}
+
+		contentValues.put(SQLiteConnection.C_TEXT, ((ConcreteDiary) diary)
+				.getText().getMedia());
 
 		long insertId = database.insert(SQLiteConnection.T_MEMORY, null,
 				contentValues);
