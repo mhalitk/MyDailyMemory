@@ -17,7 +17,7 @@ public class UserDatabaseHelper extends SQLiteDataService {
 	public int getUserId(User user) {
 		open();
 		Cursor cursor = database.query(SQLiteConnection.T_USER, columns,
-				SQLiteConnection.C_USERNAME + "=\"" + user.getName() + "\"",
+				SQLiteConnection.C_USERNAME + "=\"" + user.getName() + "\" AND " + SQLiteConnection.C_PASSWORD + "=\"" + user.getPassword() + "\"",
 				null, null, null, null);
 
 		if (cursor.getCount() == 0) {
@@ -35,9 +35,6 @@ public class UserDatabaseHelper extends SQLiteDataService {
 	}
 
 	public int registerUser(User user) {
-		int result = getUserId(user);
-		if (result >= 0)
-			return -1;
 
 		open();
 		ContentValues contentValues = new ContentValues();
@@ -51,6 +48,26 @@ public class UserDatabaseHelper extends SQLiteDataService {
 		return (int) databaseInsert;
 	}
 
+	public boolean checkUsername(User user) {
+		open();
+		Cursor cursor = database.query(SQLiteConnection.T_USER, columns,
+				SQLiteConnection.C_USERNAME + "=\"" + user.getName() + "\"",
+				null, null, null, null);
+
+		if (cursor.getCount() == 0) {
+			cursor.close();
+			close();
+			return false;
+		}
+
+		cursor.moveToFirst();
+		User tempUser = cursorToUser(cursor);
+
+		close();
+
+		return true;
+	}
+	
 	private User cursorToUser(Cursor cursor) {
 		User user = new User();
 		user.setId(cursor.getInt(cursor
