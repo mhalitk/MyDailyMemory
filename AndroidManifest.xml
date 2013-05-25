@@ -30,6 +30,10 @@
             android:name="gyte.ooaad.mydailymemory.MainActivity"
             android:label="@string/title_activity_main" >
         </activity>
+        <activity
+            android:name="gyte.ooaad.mydailymemory.NewMemory"
+            android:label="@string/title_activity_new_memory" >
+        </activity>
     </application>
 
 </manifest>

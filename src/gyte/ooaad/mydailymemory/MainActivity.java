@@ -35,6 +35,7 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Yeni tuþuna basýldýðýnda yapýlacaklar
+				startActivity(new Intent(MainActivity.this, NewMemory.class));
 			}
 		});
 		rightButton.setVisibility(View.VISIBLE);

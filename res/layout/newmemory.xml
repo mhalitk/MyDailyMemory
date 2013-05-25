@@ -1,0 +1,142 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal|center_vertical" >
+
+        <Button
+            android:id="@+id/top_leftButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Button"
+            android:visibility="invisible" />
+
+        <Space
+            android:layout_width="20dip"
+            android:layout_height="match_parent" />
+
+        <LinearLayout
+            android:layout_width="125dip"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/top_username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        </LinearLayout>
+
+        <Space
+            android:layout_width="20dip"
+            android:layout_height="match_parent" />
+
+        <Button
+            android:id="@+id/top_rightButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Button"
+            android:visibility="invisible" />
+
+    </LinearLayout>
+    
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@color/black"
+        android:orientation="vertical" >
+
+    </LinearLayout>
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:gravity="center" >
+
+          <TextView
+              android:id="@+id/textView1"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="Yeni"
+              android:textAppearance="?android:attr/textAppearanceMedium" />
+      </LinearLayout>
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginRight="20dp"
+          android:gravity="right" >
+
+          <TextView
+              android:id="@+id/textView2"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="Başlık"
+              android:textAppearance="?android:attr/textAppearanceSmall" />
+
+          <EditText
+              android:id="@+id/newmemory_header"
+              android:layout_width="225dp"
+              android:layout_height="wrap_content"
+              android:ems="10"
+              android:hint="başlık"
+              android:maxLines="1"
+              android:singleLine="true" >
+
+              <requestFocus />
+          </EditText>
+
+      </LinearLayout>
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginRight="20dp"
+          android:gravity="right" >
+
+          <TextView
+              android:id="@+id/textView4"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="Tarih"
+              android:textAppearance="?android:attr/textAppearanceSmall" />
+
+          <EditText
+              android:id="@+id/newmemory_date"
+              android:layout_width="225dp"
+              android:layout_height="wrap_content"
+              android:ems="10"
+              android:inputType="date" />
+
+      </LinearLayout>
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginRight="20dp"
+          android:gravity="bottom|right|top" >
+
+          <TextView
+              android:id="@+id/textView3"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="Yazı"
+              android:textAppearance="?android:attr/textAppearanceSmall" />
+
+          <EditText
+              android:id="@+id/editText1"
+              android:layout_width="225dp"
+              android:layout_height="wrap_content"
+              android:ems="10"
+              android:inputType="textMultiLine"
+              android:lines="5" />
+
+      </LinearLayout>
+
+</LinearLayout>

@@ -13,7 +13,9 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:gravity="right" >
 
             <TextView
                 android:id="@+id/textView1"
@@ -24,10 +26,10 @@
 
             <EditText
                 android:id="@+id/login_username"
-                android:layout_width="wrap_content"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10" >
+                android:ems="10"
+                android:singleLine="true" >
 
                 <requestFocus />
             </EditText>
@@ -36,7 +38,8 @@
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent"
+            android:layout_marginRight="10dp" >
 
             <TextView
                 android:id="@+id/textView2"
@@ -47,7 +50,7 @@
 
             <EditText
                 android:id="@+id/login_password"
-                android:layout_width="212dp"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword" />
 
