@@ -1,6 +1,7 @@
 package gyte.ooaad.mydailymemory;
 
+import gyte.ooaad.application.User;
+
 public class Session {
-	public static String username = null;
-	public static String memories = null;
+	public static User user;
 }
