@@ -8,23 +8,23 @@ package gyte.ooaad.application;
 public class Video extends MediaType {
 
 	public Video(){
-
+		super();
 	}
 
 	public void finalize() throws Throwable {
-
+		
 	}
 
 	public String getMedia(){
-		return "";
+		return super.getMedia();
 	}
 
 	/**
 	 * 
 	 * @param newVideo
 	 */
-	public void setMedia(String newVideo){
-
+	public void setMedia(String newVideo) {
+		super.setMedia(newVideo);
 	}
 
 }

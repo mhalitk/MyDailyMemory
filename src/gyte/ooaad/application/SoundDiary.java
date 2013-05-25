@@ -10,7 +10,8 @@ public class SoundDiary extends Decorator {
 	private Sound sound;
 	
 	public SoundDiary(){
-		
+		super();
+		this.sound = null;
 	}
 
 	public void finalize() throws Throwable {
@@ -18,15 +19,15 @@ public class SoundDiary extends Decorator {
 	}
 
 	public Sound getSound(){
-		return null;
+		return this.sound;
 	}
 
 	/**
 	 * 
 	 * @param sound
 	 */
-	public void setSound(Sound sound){
-
+	public void setSound(Sound theSound){
+		this.sound = theSound;
 	}
 
 }

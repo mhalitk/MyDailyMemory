@@ -8,7 +8,7 @@ package gyte.ooaad.application;
 public class Sound extends MediaType {
 
 	public Sound(){
-
+		super();
 	}
 
 	public void finalize() throws Throwable {
@@ -16,7 +16,7 @@ public class Sound extends MediaType {
 	}
 
 	public String getMedia(){
-		return "";
+		return super.getMedia();
 	}
 
 	/**
@@ -24,7 +24,7 @@ public class Sound extends MediaType {
 	 * @param newSound
 	 */
 	public void setMedia(String newSound){
-
+		super.setMedia(newSound);
 	}
 
 }

@@ -8,7 +8,7 @@ package gyte.ooaad.application;
 public class Text extends MediaType {
 
 	public Text(){
-
+		super();
 	}
 
 	public void finalize() throws Throwable {
@@ -16,7 +16,7 @@ public class Text extends MediaType {
 	}
 
 	public String getMedia(){
-		return "";
+		return super.getMedia();
 	}
 
 	/**
@@ -24,7 +24,7 @@ public class Text extends MediaType {
 	 * @param text
 	 */
 	public void setMedia(String text){
-
+		super.setMedia(text);
 	}
 
 }
