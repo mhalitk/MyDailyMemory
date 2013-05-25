@@ -38,7 +38,7 @@ public class SQLiteConnection extends SQLiteOpenHelper {
 			+ C_USERID + " integer not null, " + C_DATE + " text not null, "
 			+ C_DATEADDED + " text not null, " + C_DELETED
 			+ " integer default 0, " + C_TEXT + " text not null, " + C_PHOTO
-			+ " text not null" + C_SOUND + " text not null, " + C_VIDEO
+			+ " text not null, " + C_SOUND + " text not null, " + C_VIDEO
 			+ " text not null);";
 
 	private static final String DATABASE_NAME = "mydailymemory.db";
