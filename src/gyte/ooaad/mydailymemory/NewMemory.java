@@ -16,7 +16,7 @@ public class NewMemory extends Activity {
 		setContentView(R.layout.newmemory);
 
 		TextView username = (TextView) findViewById(R.id.top_username);
-		username.setText(Session.username);
+		username.setText(Session.user.getName());
 
 		Button leftButton = (Button) findViewById(R.id.top_leftButton);
 		leftButton.setText("Ýptal");

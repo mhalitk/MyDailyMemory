@@ -16,7 +16,7 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.main);
 
 		TextView username = (TextView) findViewById(R.id.top_username);
-		username.setText(Session.username);
+		username.setText(Session.user.getName());
 
 		Button leftButton = (Button) findViewById(R.id.top_leftButton);
 		leftButton.setText("Çýkýþ");
