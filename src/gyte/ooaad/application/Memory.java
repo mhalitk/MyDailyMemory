@@ -9,7 +9,6 @@ import java.util.Vector;
 public class Memory {
 
 	private Vector<Diary> diaries;
-	public Activity m_Activity;
 	public Diary m_Diary;
 
 	public Memory(){

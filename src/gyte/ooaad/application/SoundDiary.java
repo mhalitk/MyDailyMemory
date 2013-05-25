@@ -8,10 +8,9 @@ package gyte.ooaad.application;
 public class SoundDiary extends Decorator {
 
 	private Sound sound;
-	public Sound m_Sound;
-
+	
 	public SoundDiary(){
-
+		
 	}
 
 	public void finalize() throws Throwable {
