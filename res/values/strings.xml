@@ -12,5 +12,6 @@
     <color name="grey">#cccccc</color>
 
     <string name="title_activity_new_memory">NewMemory</string>
+    <string name="title_activity_diary_detail">DiaryDetail</string>
 
 </resources>

@@ -6,7 +6,6 @@ import gyte.ooaad.application.PhotoDiary;
 import gyte.ooaad.application.SoundDiary;
 import gyte.ooaad.application.VideoDiary;
 import gyte.ooaad.database.MemoryDatabaseHelper;
-import gyte.ooaad.database.SQLiteConnection;
 
 import java.util.List;
 
@@ -19,6 +18,8 @@ import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -130,6 +131,15 @@ public class MainActivity extends Activity {
 
 				return row;
 
+			}
+		});
+
+		listView.setOnItemClickListener(new OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int which,
+					long arg3) {
+				DiaryDetail.currentDiary = diaries.get(which);
+				startActivity(new Intent(MainActivity.this, DiaryDetail.class));
 			}
 		});
 	}
