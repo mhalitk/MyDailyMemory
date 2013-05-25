@@ -8,17 +8,21 @@ package gyte.ooaad.application;
 public class SoundDiary extends Decorator {
 
 	private Sound sound;
-	
-	public SoundDiary(){
+
+	public SoundDiary() {
 		super();
 		this.sound = null;
+	}
+
+	public SoundDiary(Diary diary) {
+		super(diary);
 	}
 
 	public void finalize() throws Throwable {
 		super.finalize();
 	}
 
-	public Sound getSound(){
+	public Sound getSound() {
 		return this.sound;
 	}
 
@@ -26,7 +30,7 @@ public class SoundDiary extends Decorator {
 	 * 
 	 * @param sound
 	 */
-	public void setSound(Sound theSound){
+	public void setSound(Sound theSound) {
 		this.sound = theSound;
 	}
 

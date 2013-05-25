@@ -7,15 +7,19 @@ package gyte.ooaad.application;
  */
 public class Video extends MediaType {
 
-	public Video(){
+	public Video() {
 		super();
 	}
 
-	public void finalize() throws Throwable {
-		
+	public Video(String video) {
+		super.setMedia(video);
 	}
 
-	public String getMedia(){
+	public void finalize() throws Throwable {
+
+	}
+
+	public String getMedia() {
 		return super.getMedia();
 	}
 

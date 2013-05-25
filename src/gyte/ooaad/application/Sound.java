@@ -7,15 +7,19 @@ package gyte.ooaad.application;
  */
 public class Sound extends MediaType {
 
-	public Sound(){
+	public Sound() {
 		super();
+	}
+
+	public Sound(String sound) {
+		super.setMedia(sound);
 	}
 
 	public void finalize() throws Throwable {
 
 	}
 
-	public String getMedia(){
+	public String getMedia() {
 		return super.getMedia();
 	}
 
@@ -23,7 +27,7 @@ public class Sound extends MediaType {
 	 * 
 	 * @param newSound
 	 */
-	public void setMedia(String newSound){
+	public void setMedia(String newSound) {
 		super.setMedia(newSound);
 	}
 

@@ -8,9 +8,13 @@ package gyte.ooaad.application;
 public class VideoDiary extends Decorator {
 
 	private Video video;
-	
-	public VideoDiary(){
+
+	public VideoDiary() {
 		super();
+	}
+
+	public VideoDiary(Diary diary) {
+		super(diary);
 	}
 
 	public void finalize() throws Throwable {
@@ -20,7 +24,7 @@ public class VideoDiary extends Decorator {
 	public void setMedia(Video theVideo) {
 		this.video = theVideo;
 	}
-	
+
 	public Video getMedia() {
 		return this.video;
 	}

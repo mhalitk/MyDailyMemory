@@ -6,16 +6,20 @@ package gyte.ooaad.application;
  * @created 25-May-2013 15:17:07
  */
 public class Photo extends MediaType {
-	
-	public Photo(){
+
+	public Photo() {
 		super();
+	}
+
+	public Photo(String photo) {
+		super.setMedia(photo);
 	}
 
 	public void finalize() throws Throwable {
 
 	}
 
-	public String getMedia(){
+	public String getMedia() {
 		return super.getMedia();
 	}
 
@@ -23,7 +27,7 @@ public class Photo extends MediaType {
 	 * 
 	 * @param photo
 	 */
-	public void setMedia(String thePhoto){
+	public void setMedia(String thePhoto) {
 		super.setMedia(thePhoto);
 	}
 
