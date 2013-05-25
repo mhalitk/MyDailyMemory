@@ -15,6 +15,18 @@ public class Login extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.login);
+			
+	}
+	
+	@Override
+	public void onResume()
+	{
+		super.onResume();
+		
+		if(Session.user.getUserId() > -1)
+		{			
+			startActivity(new Intent(Login.this, MainActivity.class));
+		}// successful user login
 	}
 
 	@Override
@@ -33,14 +45,17 @@ public class Login extends Activity {
 	 */
 	public void login(View view) {
 		// TODO Giriþ tuþuna basýldýðýnda yapýlacaklar
+		
 		TextView username = (TextView) findViewById(R.id.login_username);
 		TextView password = (TextView) findViewById(R.id.login_password);
+		
 		int userId = -1;
 		Session.user.setName(username.getText().toString());
 		Session.user.setPassword(password.getText().toString());
-		
+				
 		UserDatabaseHelper userDBHelp = new UserDatabaseHelper(Login.this);
 		userId = userDBHelp.getUserId(Session.user);
+		Session.user.setId(userId);
 		
 		if(userId > -1)
 		{
@@ -49,7 +64,7 @@ public class Login extends Activity {
 		}// successful user login
 		else
 		{
-			Toast.makeText(Login.this, "Username or password is incorrect!", Toast.LENGTH_LONG).show();
+			Toast.makeText(Login.this, "Hata: Kullanýcý adý ya da þifre hatalý!", Toast.LENGTH_LONG).show();
 			
 		}// error! Wrong username or password						
 	}

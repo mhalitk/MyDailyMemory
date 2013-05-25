@@ -2,6 +2,7 @@ package gyte.ooaad.mydailymemory;
 
 import gyte.ooaad.database.UserDatabaseHelper;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -14,6 +15,7 @@ public class Register extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.register);
+				
 	}
 
 	@Override
@@ -43,29 +45,42 @@ public class Register extends Activity {
 		//record as new user
 		UserDatabaseHelper userDBHelp = new UserDatabaseHelper(Register.this);
 
+		//if all required input is not entered
+		if(username.getText().toString().isEmpty() || password1.getText().toString().isEmpty() 
+				|| password2.getText().toString().isEmpty())
+		{
+			Toast.makeText(Register.this, "Hata: Girilen bilgiler eksik", Toast.LENGTH_LONG).show();
+			return;			
+		}
+		
 		//if password is wrong
 		if( !password1.getText().toString().equals(password2.getText().toString()) )
 		{
 			password1.setText("");
 			password2.setText("");
 			
-			Toast.makeText(Register.this, "Hata: Girilen Þifreler Eþleþmedi", Toast.LENGTH_LONG).show();
+			Toast.makeText(Register.this, "Hata: Girilen þifreler eþleþmedi", Toast.LENGTH_LONG).show();
 			return;
 		}
 		
-		Session.user.setName(username.toString());
-		Session.user.setPassword(password1.toString());
+		Session.user.setName(username.getText().toString());
+		Session.user.setPassword(password1.getText().toString());
 		
 		//if user name exists
 		if(userDBHelp.checkUsername(Session.user))
 		{
 			password1.setText("");
 						
-			Toast.makeText(Register.this, "Hata: Girilen Kullanýcý Adý Mevcut", Toast.LENGTH_LONG).show();
+			Toast.makeText(Register.this, "Hata: Girilen kullanýcý adý mevcut", Toast.LENGTH_LONG).show();
 			return;
 		}
-
-		userDBHelp.registerUser(Session.user);		
+				
+		//register user
+		userDBHelp.registerUser(Session.user);
+		Session.user.setId(userDBHelp.getUserId(Session.user));
+		
+		//return to login screen
+		onBackPressed();
 	}
 
 }
