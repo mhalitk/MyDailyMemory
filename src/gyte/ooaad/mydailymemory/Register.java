@@ -44,7 +44,7 @@ public class Register extends Activity {
 		UserDatabaseHelper userDBHelp = new UserDatabaseHelper(Register.this);
 
 		//if password is wrong
-		if( !password1.toString().equals(password2.toString()) )
+		if( !password1.getText().toString().equals(password2.getText().toString()) )
 		{
 			password1.setText("");
 			password2.setText("");
