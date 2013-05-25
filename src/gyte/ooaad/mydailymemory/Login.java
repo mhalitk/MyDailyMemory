@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
+import android.widget.TextView;
 
 public class Login extends Activity {
 
@@ -20,11 +21,19 @@ public class Login extends Activity {
 		return true;
 	}
 
+	@Override
+	public void onBackPressed() {
+
+	}
+
 	/**
 	 * Giriþ ekranýndaki giriþ tuþuna basýldýðýnda bu fonksiyon çaðýrýlýr
 	 */
 	public void login(View view) {
 		// TODO Giriþ tuþuna basýldýðýnda yapýlacaklar
+		TextView username = (TextView) findViewById(R.id.login_username);
+		Session.username = username.getText().toString();
+		startActivity(new Intent(Login.this, MainActivity.class));
 	}
 
 	/**
