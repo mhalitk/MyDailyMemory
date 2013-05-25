@@ -1,6 +1,7 @@
 package gyte.ooaad.database;
 
 import gyte.ooaad.application.User;
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 
@@ -17,7 +18,16 @@ public class UserDatabaseHelper extends SQLiteDataService {
 		Cursor cursor = database.query(SQLiteConnection.T_USER, columns,
 				SQLiteConnection.C_USERNAME + "=\"" + user.getName() + "\"",
 				null, null, null, null);
-		return -1;
+
+		if (cursor.getCount() == 0) {
+			cursor.close();
+			return -1;
+		}
+
+		cursor.moveToFirst();
+		User tempUser = cursorToUser(cursor);
+
+		return tempUser.getUserId();
 	}
 
 	public int registerUser(User user) {
@@ -25,9 +35,13 @@ public class UserDatabaseHelper extends SQLiteDataService {
 		if (result >= 0)
 			return -1;
 
-		// Veritabaný ile baglantý yapýlacak - kaydetme iþlemi
+		ContentValues contentValues = new ContentValues();
+		contentValues.put(SQLiteConnection.C_USERNAME, user.getName());
+		contentValues.put(SQLiteConnection.C_PASSWORD, user.getPassword());
+		long databaseInsert = database.insert(SQLiteConnection.T_USER, null,
+				contentValues);
 
-		return -1;
+		return (int) databaseInsert;
 	}
 
 	private User cursorToUser(Cursor cursor) {

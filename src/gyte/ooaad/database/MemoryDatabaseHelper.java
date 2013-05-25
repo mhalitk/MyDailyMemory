@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
+import android.database.Cursor;
 
 public class MemoryDatabaseHelper extends SQLiteDataService {
 
@@ -28,5 +29,11 @@ public class MemoryDatabaseHelper extends SQLiteDataService {
 
 	public boolean deleteMemory(User user, Memory memory) {
 		return false;
+	}
+
+	private Memory cursorToMemory(Cursor cursor) {
+		Memory memory = new Memory();
+
+		return memory;
 	}
 }
