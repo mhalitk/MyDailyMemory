@@ -1,5 +1,6 @@
 package gyte.ooaad.database;
 
+import gyte.ooaad.application.Diary;
 import gyte.ooaad.application.Memory;
 import gyte.ooaad.application.User;
 
@@ -11,16 +12,29 @@ import android.database.Cursor;
 
 public class MemoryDatabaseHelper extends SQLiteDataService {
 
+	private String[] columns = { SQLiteConnection.C_DIARYID,
+			SQLiteConnection.C_USERID, SQLiteConnection.C_DATE,
+			SQLiteConnection.C_DATEADDED, SQLiteConnection.C_DELETED,
+			SQLiteConnection.C_PHOTO, SQLiteConnection.C_SOUND,
+			SQLiteConnection.C_TEXT, SQLiteConnection.C_VIDEO };
+
 	public MemoryDatabaseHelper(Context context) {
 		super(context);
 	}
 
-	public List<Memory> getUserMemories(User user) {
-		List<Memory> memories = new ArrayList<Memory>();
+	public Memory getUserMemories(User user) {
+		Memory memory = new Memory();
+		List<Diary> diaries = new ArrayList<Diary>();
 
-		// Veritabani ile baðlantý yapýlacak
+		open();
 
-		return memories;
+		Cursor cursor = database.query(SQLiteConnection.T_MEMORY, columns,
+				SQLiteConnection.C_USERID + "=\"" + user.getUserId() + "\"",
+				null, null, null, null);
+
+		close();
+
+		return memory;
 	}
 
 	public boolean addMemory(User user, Memory memory) {
@@ -31,9 +45,9 @@ public class MemoryDatabaseHelper extends SQLiteDataService {
 		return false;
 	}
 
-	private Memory cursorToMemory(Cursor cursor) {
-		Memory memory = new Memory();
+	private Diary cursorToDiary(Cursor cursor) {
+		// Diary diary = new Diary();
 
-		return memory;
+		return null;
 	}
 }
