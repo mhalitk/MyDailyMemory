@@ -1,23 +1,12 @@
 package gyte.ooaad.mydailymemory;
 
-import biz.halit.resimliyoklama.R;
-import biz.halit.resimliyoklama.activities.RollCallActivity;
-import biz.halit.resimliyoklama.datatypes.Student;
-import biz.halit.resimliyoklama.utils.Session;
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.os.Environment;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.OnClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MainActivity extends Activity {
@@ -39,6 +28,16 @@ public class MainActivity extends Activity {
 			}
 		});
 		leftButton.setVisibility(View.VISIBLE);
+
+		Button rightButton = (Button) findViewById(R.id.top_rightButton);
+		rightButton.setText("Yeni");
+		rightButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				// TODO Yeni tuþuna basýldýðýnda yapýlacaklar
+			}
+		});
+		rightButton.setVisibility(View.VISIBLE);
 
 		setMemoryAdapter();
 	}

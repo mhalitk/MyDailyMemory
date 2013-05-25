@@ -12,6 +12,7 @@ public final class R {
     }
     public static final class color {
         public static final int black=0x7f050001;
+        public static final int grey=0x7f050002;
         public static final int white=0x7f050000;
     }
     public static final class drawable {
@@ -22,10 +23,13 @@ public final class R {
         public static final int button2=0x7f080004;
         public static final int login_password=0x7f080003;
         public static final int login_username=0x7f080001;
-        public static final int menu_settings=0x7f08000c;
-        public static final int register_password=0x7f08000a;
-        public static final int register_passwordAgain=0x7f08000b;
-        public static final int register_username=0x7f080009;
+        public static final int main_memoryList=0x7f080009;
+        public static final int memlistitem_header=0x7f08000a;
+        public static final int memlistitem_text=0x7f08000b;
+        public static final int menu_settings=0x7f08000f;
+        public static final int register_password=0x7f08000d;
+        public static final int register_passwordAgain=0x7f08000e;
+        public static final int register_username=0x7f08000c;
         public static final int textView1=0x7f080000;
         public static final int textView2=0x7f080002;
         public static final int top_leftButton=0x7f080006;
@@ -36,7 +40,8 @@ public final class R {
         public static final int activity_main=0x7f030000;
         public static final int login=0x7f030001;
         public static final int main=0x7f030002;
-        public static final int register=0x7f030003;
+        public static final int memlistitem=0x7f030003;
+        public static final int register=0x7f030004;
     }
     public static final class menu {
         public static final int activity_main=0x7f070000;
