@@ -15,17 +15,21 @@ public class UserDatabaseHelper extends SQLiteDataService {
 	}
 
 	public int getUserId(User user) {
+		open();
 		Cursor cursor = database.query(SQLiteConnection.T_USER, columns,
 				SQLiteConnection.C_USERNAME + "=\"" + user.getName() + "\"",
 				null, null, null, null);
 
 		if (cursor.getCount() == 0) {
 			cursor.close();
+			close();
 			return -1;
 		}
 
 		cursor.moveToFirst();
 		User tempUser = cursorToUser(cursor);
+
+		close();
 
 		return tempUser.getUserId();
 	}
@@ -35,11 +39,14 @@ public class UserDatabaseHelper extends SQLiteDataService {
 		if (result >= 0)
 			return -1;
 
+		open();
 		ContentValues contentValues = new ContentValues();
 		contentValues.put(SQLiteConnection.C_USERNAME, user.getName());
 		contentValues.put(SQLiteConnection.C_PASSWORD, user.getPassword());
 		long databaseInsert = database.insert(SQLiteConnection.T_USER, null,
 				contentValues);
+
+		close();
 
 		return (int) databaseInsert;
 	}
