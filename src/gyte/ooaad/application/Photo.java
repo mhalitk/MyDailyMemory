@@ -6,7 +6,9 @@ package gyte.ooaad.application;
  * @created 25-May-2013 15:17:07
  */
 public class Photo extends MediaType {
-
+	
+	String media;
+	
 	public Photo(){
 
 	}
