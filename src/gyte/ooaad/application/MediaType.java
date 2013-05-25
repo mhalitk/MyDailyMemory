@@ -10,7 +10,7 @@ public abstract class MediaType {
 	private String media;
 
 	public MediaType(){
-
+		media = null;
 	}
 
 	public void finalize() throws Throwable {
@@ -18,15 +18,15 @@ public abstract class MediaType {
 	}
 
 	public String getMedia(){
-		return "";
+		return media;
 	}
 
 	/**
 	 * 
 	 * @param media
 	 */
-	public void setMedia(String media){
-
+	public void setMedia(String theMedia){
+		this.media = media;
 	}
 
 }

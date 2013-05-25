@@ -7,10 +7,8 @@ package gyte.ooaad.application;
  */
 public class Photo extends MediaType {
 	
-	String media;
-	
 	public Photo(){
-
+		super();
 	}
 
 	public void finalize() throws Throwable {
@@ -18,15 +16,15 @@ public class Photo extends MediaType {
 	}
 
 	public String getMedia(){
-		return "";
+		return super.getMedia();
 	}
 
 	/**
 	 * 
 	 * @param photo
 	 */
-	public void setMedia(String photo){
-
+	public void setMedia(String thePhoto){
+		super.setMedia(thePhoto);
 	}
 
 }

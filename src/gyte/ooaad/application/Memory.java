@@ -1,5 +1,6 @@
 package gyte.ooaad.application;
-import java.util.Vector;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author halit
@@ -8,11 +9,10 @@ import java.util.Vector;
  */
 public class Memory {
 
-	private Vector<Diary> diaries;
-	public Diary m_Diary;
+	private List<Diary> diaries;
 
 	public Memory(){
-
+		diaries = new ArrayList<Diary>();
 	}
 
 	public void finalize() throws Throwable {
@@ -24,15 +24,19 @@ public class Memory {
 	 * @param newDiary
 	 */
 	public void addDiary(Diary newDiary){
-
+		diaries.add(newDiary);
 	}
 
 	/**
 	 * 
 	 * @param diary
 	 */
-	public void deleteDiary(Diary diary){
-
+	public boolean deleteDiary(Diary diary){
+		if (diaries.contains(diary)) {
+			diaries.remove(diary);
+			return true;
+		} 
+		return false;
 	}
 
 }
