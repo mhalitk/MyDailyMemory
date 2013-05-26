@@ -22,8 +22,8 @@ public class NewMemory extends Activity {
 
 	private static final int PHOTO = 444;
 	private static final int SOUND = 445;
-	private String imagePath = null;
-	private String soundPath = null;
+	private static String imagePath = null;
+	private static String soundPath = null;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +49,6 @@ public class NewMemory extends Activity {
 		rightButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
 				save();
 			}
 		});
@@ -76,14 +75,14 @@ public class NewMemory extends Activity {
 		((ConcreteDiary) diaryInstance).setText(new Text(text.getText()
 				.toString()));
 
-		if (imagePath != null) {
-			diaryInstance = new PhotoDiary(diaryInstance);
-			((PhotoDiary) diaryInstance).setPhoto(new Photo(imagePath));
-		}
-
 		if (soundPath != null) {
 			diaryInstance = new SoundDiary(diaryInstance);
 			((SoundDiary) diaryInstance).setSound(new Sound(soundPath));
+		}
+
+		if (imagePath != null) {
+			diaryInstance = new PhotoDiary(diaryInstance);
+			((PhotoDiary) diaryInstance).setPhoto(new Photo(imagePath));
 		}
 
 		memoryDBHelp.addDiary(Session.user, diaryInstance);
@@ -106,10 +105,12 @@ public class NewMemory extends Activity {
 			if (resultCode == RESULT_OK) {
 				imagePath = data.getStringExtra(TakePicture.IMAGE_PATH);
 			}
+			break;
 		case SOUND:
 			if (resultCode == RESULT_OK) {
 				soundPath = data.getStringExtra(RecordSound.SOUND_PATH);
 			}
+			break;
 		}
 	}
 

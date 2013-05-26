@@ -81,17 +81,18 @@ public class MemoryDatabaseHelper extends SQLiteDataService {
 				diary = ((VideoDiary) diary).getDiary();
 			}
 
+			if (diary instanceof SoundDiary) {
+				contentValues.put(SQLiteConnection.C_SOUND,
+						((SoundDiary) diary).getSound().getMedia());
+				diary = ((SoundDiary) diary).getDiary();
+			}
+
 			if (diary instanceof PhotoDiary) {
 				contentValues.put(SQLiteConnection.C_PHOTO,
 						((PhotoDiary) diary).getPhoto().getMedia());
 				diary = ((PhotoDiary) diary).getDiary();
 			}
 
-			if (diary instanceof SoundDiary) {
-				contentValues.put(SQLiteConnection.C_SOUND,
-						((SoundDiary) diary).getSound().getMedia());
-				diary = ((SoundDiary) diary).getDiary();
-			}
 		}
 
 		contentValues.put(SQLiteConnection.C_TEXT, ((ConcreteDiary) diary)
@@ -119,18 +120,19 @@ public class MemoryDatabaseHelper extends SQLiteDataService {
 		Text text = new Text();
 		text.setMedia(cursor.getString(cursor
 				.getColumnIndexOrThrow(SQLiteConnection.C_TEXT)));
+
 		((ConcreteDiary) diary).setText(text);
-		if (!cursor.isNull(cursor
-				.getColumnIndexOrThrow(SQLiteConnection.C_PHOTO))) {
-			diary = new PhotoDiary(diary);
-			((PhotoDiary) diary).setPhoto(new Photo(cursor.getString(cursor
-					.getColumnIndexOrThrow(SQLiteConnection.C_PHOTO))));
-		}
 		if (!cursor.isNull(cursor
 				.getColumnIndexOrThrow(SQLiteConnection.C_SOUND))) {
 			diary = new SoundDiary(diary);
 			((SoundDiary) diary).setSound(new Sound(cursor.getString(cursor
 					.getColumnIndexOrThrow(SQLiteConnection.C_SOUND))));
+		}
+		if (!cursor.isNull(cursor
+				.getColumnIndexOrThrow(SQLiteConnection.C_PHOTO))) {
+			diary = new PhotoDiary(diary);
+			((PhotoDiary) diary).setPhoto(new Photo(cursor.getString(cursor
+					.getColumnIndexOrThrow(SQLiteConnection.C_PHOTO))));
 		}
 		if (!cursor.isNull(cursor
 				.getColumnIndexOrThrow(SQLiteConnection.C_VIDEO))) {
