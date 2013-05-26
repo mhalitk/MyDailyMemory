@@ -94,6 +94,5 @@ public class RecordSound extends Activity {
 		Uri newUri = contentResolver.insert(base, values);
 
 		sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, newUri));
-		Toast.makeText(this, "Added File " + newUri, Toast.LENGTH_LONG).show();
 	}
 }

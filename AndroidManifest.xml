@@ -61,6 +61,14 @@
             android:name="gyte.ooaad.mydailymemory.RecordSound"
             android:label="@string/title_activity_record_sound" >
         </activity>
+        <activity
+            android:name="gyte.ooaad.mydailymemory.CaptureVideo"
+            android:label="@string/title_activity_capture_video" >
+        </activity>
+        <activity
+            android:name="gyte.ooaad.mydailymemory.WatchVideo"
+            android:label="@string/title_activity_watch_video" >
+        </activity>
     </application>
 
 </manifest>

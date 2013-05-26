@@ -77,7 +77,7 @@ public class MemoryDatabaseHelper extends SQLiteDataService {
 		while (!(diary instanceof ConcreteDiary)) {
 			if (diary instanceof VideoDiary) {
 				contentValues.put(SQLiteConnection.C_VIDEO,
-						((VideoDiary) diary).getMedia().getMedia());
+						((VideoDiary) diary).getVideo().getMedia());
 				diary = ((VideoDiary) diary).getDiary();
 			}
 
@@ -137,7 +137,7 @@ public class MemoryDatabaseHelper extends SQLiteDataService {
 		if (!cursor.isNull(cursor
 				.getColumnIndexOrThrow(SQLiteConnection.C_VIDEO))) {
 			diary = new VideoDiary(diary);
-			((VideoDiary) diary).setMedia(new Video(cursor.getString(cursor
+			((VideoDiary) diary).setVideo(new Video(cursor.getString(cursor
 					.getColumnIndexOrThrow(SQLiteConnection.C_VIDEO))));
 		}
 		return diary;

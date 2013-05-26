@@ -8,6 +8,8 @@ import gyte.ooaad.application.PhotoDiary;
 import gyte.ooaad.application.Sound;
 import gyte.ooaad.application.SoundDiary;
 import gyte.ooaad.application.Text;
+import gyte.ooaad.application.Video;
+import gyte.ooaad.application.VideoDiary;
 import gyte.ooaad.database.MemoryDatabaseHelper;
 import android.app.Activity;
 import android.content.Intent;
@@ -17,13 +19,16 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class NewMemory extends Activity {
 
 	private static final int PHOTO = 444;
 	private static final int SOUND = 445;
+	private static final int VIDEO = 446;
 	private static String imagePath = null;
 	private static String soundPath = null;
+	private static String videoPath = null;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -85,6 +90,11 @@ public class NewMemory extends Activity {
 			((PhotoDiary) diaryInstance).setPhoto(new Photo(imagePath));
 		}
 
+		if (videoPath != null) {
+			diaryInstance = new VideoDiary(diaryInstance);
+			((VideoDiary) diaryInstance).setVideo(new Video(videoPath));
+		}
+
 		memoryDBHelp.addDiary(Session.user, diaryInstance);
 		onBackPressed();
 	}
@@ -99,16 +109,29 @@ public class NewMemory extends Activity {
 		startActivityForResult(intent, SOUND);
 	}
 
+	public void addVideo(View view) {
+		Intent intent = new Intent(NewMemory.this, CaptureVideo.class);
+		startActivityForResult(intent, VIDEO);
+	}
+
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		switch (requestCode) {
 		case PHOTO:
 			if (resultCode == RESULT_OK) {
 				imagePath = data.getStringExtra(TakePicture.IMAGE_PATH);
+				Toast.makeText(this, "Resim eklendi", Toast.LENGTH_LONG).show();
 			}
 			break;
 		case SOUND:
 			if (resultCode == RESULT_OK) {
 				soundPath = data.getStringExtra(RecordSound.SOUND_PATH);
+				Toast.makeText(this, "Ses eklendi", Toast.LENGTH_LONG).show();
+			}
+			break;
+		case VIDEO:
+			if (resultCode == RESULT_OK) {
+				videoPath = data.getStringExtra(CaptureVideo.VIDEO_PATH);
+				Toast.makeText(this, "Video eklendi", Toast.LENGTH_LONG).show();
 			}
 			break;
 		}

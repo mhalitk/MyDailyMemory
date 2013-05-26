@@ -21,11 +21,12 @@ public class VideoDiary extends Decorator {
 		super.finalize();
 	}
 
-	public void setMedia(Video theVideo) {
+	public void setVideo(Video theVideo) {
 		this.video = theVideo;
 	}
 
-	public Video getMedia() {
+	public Video getVideo() {
 		return this.video;
 	}
+
 }

@@ -8,6 +8,8 @@ import gyte.ooaad.application.PhotoDiary;
 import gyte.ooaad.application.SoundDiary;
 import gyte.ooaad.application.VideoDiary;
 import android.app.Activity;
+import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.BitmapFactory;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -22,12 +24,15 @@ import android.widget.TextView;
 public class DiaryDetail extends Activity {
 	public static Diary currentDiary = null;
 
+	private String videoPath;
 	private String soundPath;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.diarydetail);
+
+		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
 		TextView username = (TextView) findViewById(R.id.top_username);
 		username.setText(Session.user.getName());
@@ -53,6 +58,18 @@ public class DiaryDetail extends Activity {
 
 		while (!(currentDiary instanceof ConcreteDiary)) {
 			if (currentDiary instanceof VideoDiary) {
+				LinearLayout layout = (LinearLayout) findViewById(R.id.diarydetail_videosplitter1);
+				layout.setVisibility(View.VISIBLE);
+
+				TextView videoText = (TextView) findViewById(R.id.diarydetail_videotextview);
+				videoText.setVisibility(View.VISIBLE);
+
+				LinearLayout layout2 = (LinearLayout) findViewById(R.id.diarydetail_videosplitter2);
+				layout2.setVisibility(View.VISIBLE);
+
+				Button watchButton = (Button) findViewById(R.id.diarydetail_watch);
+				watchButton.setVisibility(View.VISIBLE);
+				videoPath = ((VideoDiary) currentDiary).getVideo().getMedia();
 
 				currentDiary = ((VideoDiary) currentDiary).getDiary();
 			}
@@ -99,7 +116,6 @@ public class DiaryDetail extends Activity {
 		MediaPlayer mp = new MediaPlayer();
 		try {
 			mp.setDataSource(soundPath);
-			// mp.setDataSource("/mnt/sdcard/myvideo.mp4");
 		} catch (IllegalArgumentException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -123,6 +139,13 @@ public class DiaryDetail extends Activity {
 			e.printStackTrace();
 		}
 		mp.start();
+	}
+
+	public void watch(View view) {
+		// TODO Video will play here
+		Intent intent = new Intent(DiaryDetail.this, WatchVideo.class);
+		intent.putExtra("VIDEO_PATH", videoPath);
+		startActivity(intent);
 	}
 
 	@Override
