@@ -13,5 +13,7 @@
 
     <string name="title_activity_new_memory">NewMemory</string>
     <string name="title_activity_diary_detail">DiaryDetail</string>
+    <string name="title_activity_record_sound">RecordSound</string>
+    <string name="action_settings">Settings</string>
 
 </resources>

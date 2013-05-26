@@ -1,5 +1,7 @@
 package gyte.ooaad.mydailymemory;
 
+import java.io.IOException;
+
 import gyte.ooaad.application.ConcreteDiary;
 import gyte.ooaad.application.Diary;
 import gyte.ooaad.application.PhotoDiary;
@@ -7,6 +9,7 @@ import gyte.ooaad.application.SoundDiary;
 import gyte.ooaad.application.VideoDiary;
 import android.app.Activity;
 import android.graphics.BitmapFactory;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -18,6 +21,8 @@ import android.widget.TextView;
 
 public class DiaryDetail extends Activity {
 	public static Diary currentDiary = null;
+
+	private String soundPath;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +73,19 @@ public class DiaryDetail extends Activity {
 			}
 
 			if (currentDiary instanceof SoundDiary) {
+				LinearLayout layout = (LinearLayout) findViewById(R.id.diarydetail_soundsplitter1);
+				layout.setVisibility(View.VISIBLE);
+
+				TextView soundText = (TextView) findViewById(R.id.diarydetail_soundtextview);
+				soundText.setVisibility(View.VISIBLE);
+
+				LinearLayout layout2 = (LinearLayout) findViewById(R.id.diarydetail_soundsplitter2);
+				layout2.setVisibility(View.VISIBLE);
+
+				Button listenButton = (Button) findViewById(R.id.diarydetail_listen);
+				listenButton.setVisibility(View.VISIBLE);
+
+				soundPath = ((SoundDiary) currentDiary).getSound().getMedia();
 
 				currentDiary = ((SoundDiary) currentDiary).getDiary();
 			}
@@ -75,6 +93,36 @@ public class DiaryDetail extends Activity {
 
 		TextView text = (TextView) findViewById(R.id.diarydetail_text);
 		text.setText(((ConcreteDiary) currentDiary).getText().getMedia());
+	}
+
+	public void listen(View view) {
+		MediaPlayer mp = new MediaPlayer();
+		try {
+			mp.setDataSource(soundPath);
+			// mp.setDataSource("/mnt/sdcard/myvideo.mp4");
+		} catch (IllegalArgumentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SecurityException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalStateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			mp.prepare();
+		} catch (IllegalStateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		mp.start();
 	}
 
 	@Override

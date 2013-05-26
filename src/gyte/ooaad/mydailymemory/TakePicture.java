@@ -82,7 +82,7 @@ public class TakePicture extends Activity {
 
 				Matrix matrix = new Matrix();
 				matrix.postScale(scaleWidth, scaleHeight);
-				matrix.postRotate(0);
+				matrix.postRotate(90);
 				Bitmap resizedBitmap = Bitmap.createBitmap(bitmapOrg, 0, 0,
 						width, height, matrix, true);
 

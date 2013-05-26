@@ -8,6 +8,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.front" />
@@ -55,6 +56,10 @@
         <activity
             android:name="gyte.ooaad.mydailymemory.DiaryDetail"
             android:label="@string/title_activity_diary_detail" >
+        </activity>
+        <activity
+            android:name="gyte.ooaad.mydailymemory.RecordSound"
+            android:label="@string/title_activity_record_sound" >
         </activity>
     </application>
 

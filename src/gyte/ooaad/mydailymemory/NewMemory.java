@@ -5,6 +5,8 @@ import gyte.ooaad.application.Date;
 import gyte.ooaad.application.Diary;
 import gyte.ooaad.application.Photo;
 import gyte.ooaad.application.PhotoDiary;
+import gyte.ooaad.application.Sound;
+import gyte.ooaad.application.SoundDiary;
 import gyte.ooaad.application.Text;
 import gyte.ooaad.database.MemoryDatabaseHelper;
 import android.app.Activity;
@@ -19,7 +21,9 @@ import android.widget.TextView;
 public class NewMemory extends Activity {
 
 	private static final int PHOTO = 444;
+	private static final int SOUND = 445;
 	private String imagePath = null;
+	private String soundPath = null;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +81,11 @@ public class NewMemory extends Activity {
 			((PhotoDiary) diaryInstance).setPhoto(new Photo(imagePath));
 		}
 
+		if (soundPath != null) {
+			diaryInstance = new SoundDiary(diaryInstance);
+			((SoundDiary) diaryInstance).setSound(new Sound(soundPath));
+		}
+
 		memoryDBHelp.addDiary(Session.user, diaryInstance);
 		onBackPressed();
 	}
@@ -86,11 +95,20 @@ public class NewMemory extends Activity {
 		startActivityForResult(intent, PHOTO);
 	}
 
+	public void addSound(View view) {
+		Intent intent = new Intent(NewMemory.this, RecordSound.class);
+		startActivityForResult(intent, SOUND);
+	}
+
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		switch (requestCode) {
 		case PHOTO:
 			if (resultCode == RESULT_OK) {
 				imagePath = data.getStringExtra(TakePicture.IMAGE_PATH);
+			}
+		case SOUND:
+			if (resultCode == RESULT_OK) {
+				soundPath = data.getStringExtra(RecordSound.SOUND_PATH);
 			}
 		}
 	}

@@ -16,7 +16,7 @@
             android:layout_height="wrap_content" >
 
             <TextView
-                android:id="@+id/textView1"
+                android:id="@+id/diarydetail_soundtextview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Kullanıcı Adı"
@@ -78,14 +78,14 @@
             android:gravity="center" >
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/addSoundButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Geri"
                 android:onClick="back" />
 
             <Button
-                android:id="@+id/button1"
+                android:id="@+id/diarydetail_listen"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Kayıt Ol"
