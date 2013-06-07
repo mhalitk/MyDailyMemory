@@ -55,19 +55,23 @@
         </activity>
         <activity
             android:name="gyte.ooaad.mydailymemory.DiaryDetail"
-            android:label="@string/title_activity_diary_detail" >
+            android:label="@string/title_activity_diary_detail"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="gyte.ooaad.mydailymemory.RecordSound"
-            android:label="@string/title_activity_record_sound" >
+            android:label="@string/title_activity_record_sound"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="gyte.ooaad.mydailymemory.CaptureVideo"
-            android:label="@string/title_activity_capture_video" >
+            android:label="@string/title_activity_capture_video"
+            android:screenOrientation="landscape" >
         </activity>
         <activity
             android:name="gyte.ooaad.mydailymemory.WatchVideo"
-            android:label="@string/title_activity_watch_video" >
+            android:label="@string/title_activity_watch_video"
+            android:screenOrientation="landscape" >
         </activity>
     </application>
 
